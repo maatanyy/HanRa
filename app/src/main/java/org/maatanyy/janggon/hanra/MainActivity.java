@@ -2,8 +2,11 @@ package org.maatanyy.janggon.hanra;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -11,12 +14,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-
     @BindView(R.id.button)
     Button button;
 
     @BindView(R.id.button2)
     Button button2;
+
+    @BindView(R.id.imageView)
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +31,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     @OnClick(R.id.button)
-    void onButtonClicked(){
-       Toast.makeText(this,"aaaaaaaa", Toast.LENGTH_SHORT).show();
+    public void onmap(){
+        Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+        startActivity(intent);
     }
+
 
     @OnClick(R.id.button2)
-    void onButton2Clicked(){
-        Toast.makeText(this,"11", Toast.LENGTH_SHORT).show();
+    public void oncourse(){
+        Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+        startActivity(intent);
     }
+
 
 }
