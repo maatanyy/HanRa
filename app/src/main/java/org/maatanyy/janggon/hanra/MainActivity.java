@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.button2)
     Button button2;
 
+    @BindView(R.id.button6)
+    Button button6;
+
     @BindView(R.id.imageView)
     ImageView imageView;
 
@@ -41,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.button2)
     public void oncourse(){
         Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.button6)
+    public void onresolve(){
+        Intent intent = new Intent(getApplicationContext(), ResolveActivity.class);
         startActivity(intent);
     }
 
