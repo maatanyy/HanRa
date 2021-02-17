@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -32,6 +34,8 @@ public class MapActivity extends AppCompatActivity implements AutoPermissionsLis
     GoogleMap map;
     MarkerOptions myLocationMarker;
 
+    MarkerOptions bakLocationMarker;
+
     TextView textView5;
 
     @Override
@@ -57,13 +61,9 @@ public class MapActivity extends AppCompatActivity implements AutoPermissionsLis
 
         textView5 = findViewById(R.id.textView5);
 
-        Button button9 = findViewById(R.id.button9);
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startLocationService();
-            }
-        });
+        startLocationService();
+
+           //     startLocationService();
 
         AutoPermissions.Companion.loadAllPermissions(this,101);
     }
@@ -89,7 +89,7 @@ public class MapActivity extends AppCompatActivity implements AutoPermissionsLis
             float minDistance = 0;  //최소 거리 0
 
             manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,minTime,minDistance,gpsListener);
-            Toast.makeText(getApplicationContext(),"내 위치확인 요청함",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"내 위치 업데이트",Toast.LENGTH_SHORT).show();
 
         }catch (SecurityException e){
             e.printStackTrace();
@@ -126,8 +126,10 @@ public class MapActivity extends AppCompatActivity implements AutoPermissionsLis
 
     private void showCurrentLocation(Double latitude,Double longitude){
         LatLng curPoint = new LatLng(latitude,longitude);    //현재 위치 좌표로 LatLng 객체 생성
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint,11));   // 지정한 위치의 지도 보여주기기, 숫자 커기면 더 크게 보임 보통 19나 21이 최대
+        LatLng curPoint2 = new LatLng(33.424593397374, 126.55045477963472);
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint,12));   // 지정한 위치의 지도 보여주기기, 숫자 커기면 더 크게 보임 보통 19나 21이 최대
         showMyLocationMarker(curPoint);
+        showMarker(curPoint2);
    }
 
    public void onResume(){
@@ -158,5 +160,19 @@ public class MapActivity extends AppCompatActivity implements AutoPermissionsLis
             myLocationMarker.position(curPoint);
         }
    }
+
+    private void showMarker(LatLng curPoint){
+        if(bakLocationMarker==null){
+           bakLocationMarker = new MarkerOptions();
+            bakLocationMarker.position(curPoint);
+            bakLocationMarker.title("백록담\n");
+            bakLocationMarker.snippet("해발 1950m");
+            bakLocationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation));
+            map.addMarker(bakLocationMarker);
+        }else{
+            bakLocationMarker.position(curPoint);
+        }
+    }
+
 
 }

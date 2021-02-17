@@ -20,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.button2)
     Button button2;
 
+    @BindView(R.id.button3)
+    Button button3;
+
+    @BindView(R.id.button5)
+    Button button5;
+
     @BindView(R.id.button6)
     Button button6;
 
@@ -44,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.button2)
     public void oncourse(){
         Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.button3)
+    public void onweather(){
+        Intent intent = new Intent(getApplicationContext(), WeatherActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.button5)
+    public void onhelp(){
+        Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
         startActivity(intent);
     }
 
