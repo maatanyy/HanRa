@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,9 +31,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class WeatherActivity extends AppCompatActivity {
-    @BindView(R.id.editText)
-    EditText editText;
-
     @BindView(R.id.button9)
     Button button9;
 
@@ -67,9 +65,10 @@ public class WeatherActivity extends AppCompatActivity {
         makeRequest();
     }
 
+
     public void makeRequest(){
 
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=Jeju&appid=8367f47f6242e5310c1b27a4ebfd9868";
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=Jeju&appid=8367f47f6242e5310c1b27a4ebfd9868";
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
 
@@ -89,6 +88,7 @@ public class WeatherActivity extends AppCompatActivity {
                     String getDay = simpleDateFormatDay.format(date);
                     String getTime = simpleDateFormatTime.format(date);
 
+
                     //getDate에 개행을 포함한 형식들을 넣은 후 dateView에 text설정
                     String getDate = getDay + "\n" + getTime;
                     dateView.setText(getDate);
@@ -98,17 +98,16 @@ public class WeatherActivity extends AppCompatActivity {
 
 
                     //도시 키값 받기
-                    String city = jsonObject.getString("name");
+                   // String city = jsonObject.getString("name");
 
+                    String city = jsonObject.getString("name");
                     cityView.setText(city);
 
 
                     //날씨 키값 받기
                     JSONArray weatherJson = jsonObject.getJSONArray("weather");
                     JSONObject weatherObj = weatherJson.getJSONObject(0);
-
                     String weather = weatherObj.getString("description");
-
                     weatherView.setText(weather);
 
 

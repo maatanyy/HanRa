@@ -34,19 +34,20 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         app:srcCompat="@drawable/ic_baseline_location_on_24"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingStart="4dp"
                         android:paddingLeft="4dp"
-                        android:text="관측장소"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                        android:text="관측날짜"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/result_location_text"
+                    android:id="@+id/dateView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
@@ -81,27 +82,28 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         app:srcCompat="@drawable/ic_baseline_location_on_24"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingStart="4dp"
                         android:paddingLeft="4dp"
-                        android:text="관측시간"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                        android:text="관측도시"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/result_time_text"
+                    android:id="@+id/cityView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="24dp"
                     android:paddingStart="24dp"
+                    android:paddingLeft="24dp"
                     android:paddingTop="8dp"
-                    tools:text="송파구"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                    android:paddingBottom="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:text="송파구" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -128,19 +130,20 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         app:srcCompat="@drawable/ic_baseline_location_on_24"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingStart="4dp"
                         android:paddingLeft="4dp"
-                        android:text="예상 강수량"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                        android:text="관측 온도"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/result_rain_text"
+                    android:id="@+id/tempView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="24dp"
@@ -153,43 +156,59 @@
 
         </androidx.cardview.widget.CardView>
 
-        <EditText
-            android:id="@+id/editText"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="싸이트 주소 입력"
-            android:inputType="textPersonName" />
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        app:srcCompat="@drawable/ic_baseline_location_on_24"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:paddingLeft="4dp"
+                        android:text="관측 구름"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/weatherView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="24dp"
+                    android:paddingLeft="24dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:text="한라산 백록담" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/button9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="요청하기" />
-
-        <TextView
-            android:id="@+id/dateView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/cityView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/weatherView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/tempView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
 
     </LinearLayout>
