@@ -32,9 +32,8 @@ public class MapActivity extends AppCompatActivity implements AutoPermissionsLis
 
     SupportMapFragment mapFragment;  //Supportmapfragment 안에 들어있는 구글맵 객체 위에 지도가 표시
     GoogleMap map;
-    MarkerOptions myLocationMarker;
-
-    MarkerOptions bakLocationMarker;
+    MarkerOptions myLocationMarker;   //내 위치
+    MarkerOptions bakLocationMarker;   //백록담
 
     TextView textView5;
 
@@ -63,7 +62,7 @@ public class MapActivity extends AppCompatActivity implements AutoPermissionsLis
 
         startLocationService();
 
-           //     startLocationService();
+        //     startLocationService();
 
         AutoPermissions.Companion.loadAllPermissions(this,101);
     }

@@ -168,9 +168,27 @@
             android:text="요청하기" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/dateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/cityView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/weatherView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tempView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="TextView" />
 
 

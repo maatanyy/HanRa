@@ -2,8 +2,8 @@ package org.maatanyy.janggon.hanra;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,10 +16,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,8 +36,17 @@ public class WeatherActivity extends AppCompatActivity {
     @BindView(R.id.button9)
     Button button9;
 
-    @BindView(R.id.textView2)
-    TextView textView2;
+    @BindView(R.id.dateView)
+    TextView dateView;
+
+    @BindView(R.id.cityView)
+    TextView cityView;
+
+    @BindView(R.id.weatherView)
+    TextView weatherView;
+
+    @BindView(R.id.tempView)
+    TextView tempView;
 
    static RequestQueue requestQueue;
 
@@ -48,6 +59,7 @@ public class WeatherActivity extends AppCompatActivity {
         if(requestQueue == null){
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
+
     }
 
     @OnClick(R.id.button9)
@@ -56,34 +68,78 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     public void makeRequest(){
-        String url = editText.getText().toString();
+
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=Jeju&appid=8367f47f6242e5310c1b27a4ebfd9868";
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(String response) {
-                println("응답-> " + response);
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        println("에러-> " +error.getMessage());
-                    }
+
+                try {
+
+                    //System의 현재 시간(년,월,일,시,분,초까지)가져오고 Date로 객체화함
+                    long now = System.currentTimeMillis();
+                    Date date = new Date(now);
+
+                    //년, 월, 일 형식으로. 시,분,초 형식으로 객체화하여 String에 형식대로 넣음
+                    SimpleDateFormat simpleDateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat("HH:mm:ss");
+                    String getDay = simpleDateFormatDay.format(date);
+                    String getTime = simpleDateFormatTime.format(date);
+
+                    //getDate에 개행을 포함한 형식들을 넣은 후 dateView에 text설정
+                    String getDate = getDay + "\n" + getTime;
+                    dateView.setText(getDate);
+
+                    //api로 받은 파일 jsonobject로 새로운 객체 선언
+                    JSONObject jsonObject = new JSONObject(response);
+
+
+                    //도시 키값 받기
+                    String city = jsonObject.getString("name");
+
+                    cityView.setText(city);
+
+
+                    //날씨 키값 받기
+                    JSONArray weatherJson = jsonObject.getJSONArray("weather");
+                    JSONObject weatherObj = weatherJson.getJSONObject(0);
+
+                    String weather = weatherObj.getString("description");
+
+                    weatherView.setText(weather);
+
+
+
+                    //기온 키값 받기
+                    JSONObject tempK = new JSONObject(jsonObject.getString("main"));
+
+                    //기온 받고 켈빈 온도를 섭씨 온도로 변경
+                    double tempDo = (Math.round((tempK.getDouble("temp")-273.15)*100)/100.0);
+                    tempView.setText(tempDo +  "°C");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-        ){
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<String,String>();
+                Map<String, String> params = new HashMap<String, String>();
+
                 return params;
             }
+
         };
 
         request.setShouldCache(false);
         requestQueue.add(request);
-        println("요청 보냄.");
-    }
-
-    public void println(String data){
-        textView2.append(data + "\n");
     }
 }
