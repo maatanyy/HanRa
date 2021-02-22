@@ -185,7 +185,7 @@
                         android:layout_gravity="center_vertical"
                         android:paddingStart="4dp"
                         android:paddingLeft="4dp"
-                        android:text="관측 구름"
+                        android:text="관측 날씨"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 </LinearLayout>

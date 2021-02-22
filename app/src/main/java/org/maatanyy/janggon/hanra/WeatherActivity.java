@@ -57,7 +57,6 @@ public class WeatherActivity extends AppCompatActivity {
         if(requestQueue == null){
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
     }
 
     @OnClick(R.id.button9)
@@ -65,10 +64,9 @@ public class WeatherActivity extends AppCompatActivity {
         makeRequest();
     }
 
-
     public void makeRequest(){
 
-        String url = "https://api.openweathermap.org/data/2.5/weather?q=Jeju&appid=8367f47f6242e5310c1b27a4ebfd9868";
+        String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=1846266&lang=kr&appid=8367f47f6242e5310c1b27a4ebfd9868";
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
 
@@ -77,6 +75,7 @@ public class WeatherActivity extends AppCompatActivity {
             public void onResponse(String response) {
 
                 try {
+
 
                     //System의 현재 시간(년,월,일,시,분,초까지)가져오고 Date로 객체화함
                     long now = System.currentTimeMillis();
@@ -93,19 +92,21 @@ public class WeatherActivity extends AppCompatActivity {
                     String getDate = getDay + "\n" + getTime;
                     dateView.setText(getDate);
 
+
                     //api로 받은 파일 jsonobject로 새로운 객체 선언
                     JSONObject jsonObject = new JSONObject(response);
 
 
                     //도시 키값 받기
                    // String city = jsonObject.getString("name");
-
                     String city = jsonObject.getString("name");
                     cityView.setText(city);
 
 
                     //날씨 키값 받기
                     JSONArray weatherJson = jsonObject.getJSONArray("weather");
+                    JSONArray aa = weatherJson;
+                    Log.i("aa","메시지");
                     JSONObject weatherObj = weatherJson.getJSONObject(0);
                     String weather = weatherObj.getString("description");
                     weatherView.setText(weather);
@@ -114,10 +115,12 @@ public class WeatherActivity extends AppCompatActivity {
 
                     //기온 키값 받기
                     JSONObject tempK = new JSONObject(jsonObject.getString("main"));
-
                     //기온 받고 켈빈 온도를 섭씨 온도로 변경
                     double tempDo = (Math.round((tempK.getDouble("temp")-273.15)*100)/100.0);
                     tempView.setText(tempDo +  "°C");
+
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -25,7 +25,7 @@
             android:background="@drawable/my_btn"
             android:text="#성판악"
             android:textColor="@color/black"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/buttongwan"
@@ -39,7 +39,7 @@
             android:background="@drawable/my_btn"
             android:text="#관음사"
             android:textColor="@color/black"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
     </LinearLayout>
 
     <FrameLayout

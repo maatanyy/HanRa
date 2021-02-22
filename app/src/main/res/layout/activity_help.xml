@@ -15,5 +15,5 @@
         android:background="@drawable/my_btn"
         android:text="SOS"
         android:textColor="@color/black"
-        app:backgroundTint="#EDE7F6" />
+        app:backgroundTint="#B2DFDB" />
 </LinearLayout>

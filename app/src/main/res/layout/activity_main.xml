@@ -3,25 +3,175 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardUseCompatPadding="true">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="260dp"
-        android:background="@drawable/hanra6" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:srcCompat="@drawable/ic_baseline_landscape_24" />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:paddingStart="4dp"
+                    android:paddingLeft="4dp"
+                    android:text="한라산 "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="24dp"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="유네스코 세계유산"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="24dp"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="해발 1950m"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:srcCompat="@drawable/ic_baseline_cached_24" />
+
+                <TextView
+                    android:id="@+id/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:paddingStart="4dp"
+                    android:paddingLeft="4dp"
+                    android:text="실시간 제주도 날씨"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <Button
+                    android:id="@+id/buttonNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:background="@drawable/my_btn"
+                    android:text="확인"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#B2DFDB" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/timeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="관측 날짜"
+                android:paddingStart="24dp"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:text="관측 날짜" />
+
+            <TextView
+                android:id="@+id/dateView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="관측 온도"
+                android:paddingStart="24dp"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:text="관측 온도" />
+
+            <TextView
+                android:id="@+id/weatherView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="관측 날씨"
+                android:paddingStart="24dp"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:text="관측 날씨" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
 
         <Button
             android:id="@+id/button"
@@ -29,14 +179,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/my_btn"
             android:text="#지도"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/button2"
@@ -44,14 +194,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/button"
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/my_btn"
             android:text="#탐방정보"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/button3"
@@ -59,14 +209,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/button2"
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/my_btn"
-            android:text="#기후정보"
+            android:text="#주간날씨"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/button4"
@@ -74,27 +224,27 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/button3"
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/my_btn"
             android:text="#대피소"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:background="@drawable/my_btn"
             android:text="#구조요청"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/button6"
@@ -103,13 +253,13 @@
             android:layout_below="@id/button5"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:background="@drawable/my_btn"
             android:text="#탐방예약"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/button7"
@@ -118,13 +268,13 @@
             android:layout_below="@id/button6"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:background="@drawable/my_btn"
             android:text="#미정"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
         <Button
             android:id="@+id/button8"
@@ -133,13 +283,13 @@
             android:layout_below="@id/button7"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:background="@drawable/my_btn"
             android:text="#미정2"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:backgroundTint="#EDE7F6" />
+            app:backgroundTint="#B2DFDB" />
 
     </RelativeLayout>
 </LinearLayout>
